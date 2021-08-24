@@ -1,7 +1,19 @@
+body {
+    margin: 0 auto;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+#pageWrapper {
+    display: flex;
+    justify-content: center;
+}
+
 #housing {
+    margin-top: 100px;
     outline: solid red 2px;
     height: 500px;
-    width: 450px;
+    width: 400px;
     border-radius: 40px;
 }
 
@@ -11,4 +23,28 @@
     height: 100px;
     width: 100%;
     margin-top: 50px;
+}
+ #buttonGroup {
+    outline: solid orange 2px;
+    height: 75%;
+    width: 90%;
+    margin: 20px auto;
+ }
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    margin: 5px;
+    outline: solid purple 2px;
+    height: 50px;
+    width: 16%; /* can't put 20 will figure out why */
+    border-radius: 10px;
+}
+
+#displayText{
+    text-align: right;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    padding-right: 40px;
+    font-size: 2em;
 }
