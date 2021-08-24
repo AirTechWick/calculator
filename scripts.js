@@ -1,6 +1,12 @@
+// Globals
+let DISPLAY_VALUE = 0; // default
+const displayText = document.querySelector("#displayText");
+
+
 function start()
 {
-
+    addButtonlisteners();
+    addOptionListeners();
 }
 
 function add(a,b)
@@ -47,7 +53,61 @@ function operate(operator, a, b)
     }
 }
 
+function clearDisplay()
+{
+    displayText.textContent = 0;
+}
+
+function deleteNumber()
+{
+
+}
+
 function populateDisplay()
 {
-    
+
+    if(displayText.textContent[0] == "0") // if the display is 0
+    {
+        displayText.textContent = DISPLAY_VALUE;
+        return;
+    }
+
+    if(DISPLAY_VALUE == "=")
+    {
+        console.log(2);
+    }
+
+    else
+    {
+        displayText.textContent += DISPLAY_VALUE;
+    }
 }
+
+function addButtonlisteners()
+{
+    const buttonNodes = document.querySelectorAll(".button");
+
+    let buttonArray = Array.from(buttonNodes);
+
+    console.log(buttonArray);
+
+    buttonArray.forEach(element => {
+        element.addEventListener('click', function(e){
+            const value = element.getAttribute('value');
+            DISPLAY_VALUE = value;
+            populateDisplay();
+        });
+    });
+}
+
+function addOptionListeners()
+{
+    const clear = document.querySelector("#clear");
+
+    clear.addEventListener('click', function(e){
+        clearDisplay();
+    });
+}
+
+
+start();

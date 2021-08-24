@@ -27,8 +27,6 @@ body {
 }
  #buttonGroup {
     text-align: center;
-    outline: solid orange 2px;
-    height: 75%;
     width: 90%;
     margin: 20px auto;
  }
@@ -43,6 +41,7 @@ body {
     width: 20%; /* can't put 20 will figure out why */
     border-radius: 10px;
     flex-direction: column;
+    font-size: 1.25em;
 }
 
 .button:hover {
@@ -60,7 +59,6 @@ body {
 
 #optionGroup {
     display: flex;
-    border: solid pink 2px;
     justify-content: center;
     margin-top: 20px;
 }
@@ -75,6 +73,7 @@ body {
     line-height: 50px; /* css trick to vertical align text is to make line height equal to height */
     margin: 10px;
     border-radius: 10px;
+    font-size: 1.25em;
 }
 
 .option:hover
