@@ -12,7 +12,7 @@ body {
 
 #housing {
     margin-top: 100px;
-    outline: solid red 2px;
+    border: solid red 2px;
     width: 400px;
     border-radius: 40px;
     background-color: rgb(41, 51, 78);
@@ -20,7 +20,7 @@ body {
 
 #display {
     display: inline-block;
-    outline: solid green 2px;
+    border: solid green 2px;
     height: 100px;
     width: 100%;
     margin-top: 50px;
@@ -36,11 +36,10 @@ body {
     justify-content: center;
     margin: 5px;
     background-color: rgb(190, 240, 240);
-    outline: solid purple 2px;
     height: 60px;
     width: 20%; /* can't put 20 will figure out why */
+    border: solid 2px purple;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
     flex-direction: column;
     font-size: 1.25em;
 }
@@ -67,7 +66,7 @@ body {
 .option {
     display: inline-block;
     text-align: center;
-    border:solid purple 1px;
+    border:solid purple 2px;
     background-color: rgb(190, 240, 240);
     width: 40%;
     height: 50px;
