@@ -2,6 +2,7 @@ body {
     margin: 0 auto;
     width: 100%;
     font-family: sans-serif;
+    background-color:rgb(138, 106, 158);
 }
 
 #pageWrapper {
@@ -12,9 +13,9 @@ body {
 #housing {
     margin-top: 100px;
     outline: solid red 2px;
-    height: 500px;
     width: 400px;
     border-radius: 40px;
+    background-color: rgb(41, 51, 78);
 }
 
 #display {
@@ -25,6 +26,7 @@ body {
     margin-top: 50px;
 }
  #buttonGroup {
+    text-align: center;
     outline: solid orange 2px;
     height: 75%;
     width: 90%;
@@ -35,10 +37,16 @@ body {
     display: inline-flex;
     justify-content: center;
     margin: 5px;
+    background-color: rgb(190, 240, 240);
     outline: solid purple 2px;
-    height: 50px;
-    width: 16%; /* can't put 20 will figure out why */
+    height: 60px;
+    width: 20%; /* can't put 20 will figure out why */
     border-radius: 10px;
+    flex-direction: column;
+}
+
+.button:hover {
+    background-color: rgb(199, 206, 228);
 }
 
 #displayText{
@@ -47,4 +55,29 @@ body {
     padding-bottom: 30px;
     padding-right: 40px;
     font-size: 2em;
+    background-color: azure;
+}
+
+#optionGroup {
+    display: flex;
+    border: solid pink 2px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.option {
+    display: inline-block;
+    text-align: center;
+    border:solid purple 1px;
+    background-color: rgb(190, 240, 240);
+    width: 40%;
+    height: 50px;
+    line-height: 50px; /* css trick to vertical align text is to make line height equal to height */
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.option:hover
+{
+    background-color: rgb(199, 206, 228);
 }
