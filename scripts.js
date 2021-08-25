@@ -4,17 +4,25 @@ const displayText = document.querySelector("#displayText");
 let FIRST_NUMBER = null;
 let SECOND_NUMBER = null;
 let OPERATION = null;
-let PREV_OPERATION = null;
 let RESULT = null;
 let userPress = null;
-
 
 function start()
 {
     addNumberListeners();
     addOptionListeners();
     addOperatorListeners();
+    equalSignListener();
 }
+
+function resetVars()
+{
+    FIRST_NUMBER = null;
+    SECOND_NUMBER = null;
+    OPERATION = null;
+    RESULT = null;
+    userPress = null;
+    }
 
 function add(a,b)
 {
@@ -72,6 +80,7 @@ function operate(operator, a, b)
 function clearDisplay()
 {
     displayText.textContent = 0;
+    resetVars();
 }
 
 function deleteNumber()
@@ -94,12 +103,6 @@ function populateDisplay()
     {
         displayText.textContent = DISPLAY_DIGIT;
         return;
-    }
-
-
-    if(DISPLAY_DIGIT == "=")
-    {
-        console.log(2);
     }
 
     else
@@ -139,10 +142,7 @@ function addOperatorListeners()
             DISPLAY_DIGIT = value;
             populateDisplay();
             userPress = value;
-
             saveNumber();
-
-
         });
     });
 }
@@ -168,6 +168,22 @@ function addOptionListeners()
 
 }
 
+function equalSignListener()
+{
+    const equalSign = document.querySelector("#equalSign");
+    
+    equalSign.addEventListener('click', function(e){
+        if(RESULT == null)
+        {
+            SECOND_NUMBER = displayText.textContent;
+            operate(OPERATION,FIRST_NUMBER,SECOND_NUMBER);
+            OPERATION = displayText.textContent.slice(-1);
+        }
+
+        displayText.textContent = RESULT;
+    });
+}
+
 function saveNumber()
 {
     /// if a user presses an operator save the first number and the operator
@@ -181,6 +197,7 @@ function saveNumber()
         console.log("Second: ", SECOND_NUMBER);
         console.log("Operation: ", OPERATION);
         operate(OPERATION,FIRST_NUMBER,SECOND_NUMBER);
+        OPERATION = displayText.textContent.slice(-1);
         console.log("Result: ",RESULT);
     }
 
@@ -190,6 +207,7 @@ function saveNumber()
         console.log(186);
         SECOND_NUMBER = displayText.textContent.slice(0,-1);
         operate(OPERATION, FIRST_NUMBER, SECOND_NUMBER);
+        OPERATION = displayText.textContent.slice(-1);
         console.log("Result: ",RESULT);
     }   
    
