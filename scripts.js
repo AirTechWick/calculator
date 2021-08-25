@@ -1,7 +1,9 @@
 // Globals
 let DISPLAY_VALUE = 0; // default
 const displayText = document.querySelector("#displayText");
-
+let FIRST_NUMBER = null;
+let SECOND_NUMBER = null;
+let OPERATION = null;
 
 function start()
 {
@@ -81,6 +83,8 @@ function populateDisplay()
     {
         displayText.textContent += DISPLAY_VALUE;
     }
+
+    saveNumber();
 }
 
 function addButtonlisteners()
@@ -89,7 +93,6 @@ function addButtonlisteners()
 
     let buttonArray = Array.from(buttonNodes);
 
-    console.log(buttonArray);
 
     buttonArray.forEach(element => {
         element.addEventListener('click', function(e){
@@ -109,5 +112,30 @@ function addOptionListeners()
     });
 }
 
+function saveNumber()
+{
+    let secondSaved = false;
+    const displayString = displayText.textContent;
+    const operators = ["+","-","x","÷","="];
+
+    /// if a user presses an operator save the first number and the operator
+    // if a user presses "=" operate() on the two numbers
+    if(!operators.includes(OPERATION))
+    {
+        FIRST_NUMBER = displayString.slice(0,-1); // slice from beginning to last number not including operator
+        OPERATION = displayString[displayString.length - 1];
+        console.log(FIRST_NUMBER);
+        console.log(OPERATION);
+    
+    }
+
+    if(operators.includes(OPERATION))
+    {
+        displayText = 0
+        SECOND_NUMBER = displayString;
+        console.log(SECOND_NUMBER);
+    }
+   
+}
 
 start();
