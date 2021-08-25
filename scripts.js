@@ -4,6 +4,10 @@ const displayText = document.querySelector("#displayText");
 let FIRST_NUMBER = null;
 let SECOND_NUMBER = null;
 let OPERATION = null;
+let userPress = null;
+const operators = document.querySelectorAll(".operator");
+const operatorArray = Array.from(operators);
+
 
 function start()
 {
@@ -62,11 +66,13 @@ function clearDisplay()
 
 function deleteNumber()
 {
-
+    let string = displayText.textContent;
+    displayText.textContent = string.slice(1);
 }
 
 function populateDisplay()
 {
+    const operators = ["+","-","x","÷","="];
 
     if(displayText.textContent[0] == "0") // if the display is 0
     {
@@ -79,12 +85,16 @@ function populateDisplay()
         console.log(2);
     }
 
+    if(operators.includes(displayText))
+    {
+        displayText.textContent = DISPLAY_VALUE;
+    }
+
     else
     {
         displayText.textContent += DISPLAY_VALUE;
     }
 
-    saveNumber();
 }
 
 function addButtonlisteners()
@@ -99,6 +109,7 @@ function addButtonlisteners()
             const value = element.getAttribute('value');
             DISPLAY_VALUE = value;
             populateDisplay();
+            userPress = value;
         });
     });
 }
@@ -106,36 +117,30 @@ function addButtonlisteners()
 function addOptionListeners()
 {
     const clear = document.querySelector("#clear");
+    const deleteNum = document.querySelector("#delete");
+
 
     clear.addEventListener('click', function(e){
+        const value = clear.getAttribute('value');
+        userPress = value;
         clearDisplay();
     });
+
+    deleteNum.addEventListener('click', function(e){
+        const value = deleteNum.getAttribute('value');
+        userPress = value;
+        deleteNumber();
+    });
+
 }
 
 function saveNumber()
 {
-    let secondSaved = false;
-    const displayString = displayText.textContent;
-    const operators = ["+","-","x","÷","="];
-
     /// if a user presses an operator save the first number and the operator
     // if a user presses "=" operate() on the two numbers
-    if(!operators.includes(OPERATION))
-    {
-        FIRST_NUMBER = displayString.slice(0,-1); // slice from beginning to last number not including operator
-        OPERATION = displayString[displayString.length - 1];
-        console.log(FIRST_NUMBER);
-        console.log(OPERATION);
-    
-    }
 
-    if(operators.includes(OPERATION))
-    {
-        displayText = 0
-        SECOND_NUMBER = displayString;
-        console.log(SECOND_NUMBER);
-    }
-   
+
 }
+
 
 start();
