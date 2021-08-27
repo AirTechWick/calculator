@@ -1,28 +1,30 @@
 // Globals
-let DISPLAY_DIGIT = 0; // default
-const displayText = document.querySelector("#displayText");
-let FIRST_NUMBER = null;
-let SECOND_NUMBER = null;
-let OPERATION = null;
 let RESULT = null;
-let userPress = null;
+
+
+// Query Selectors
+let display = document.querySelector("#displayText");
+const clear = document.querySelector("#clear");
+const deleteNum = document.querySelector("#delete");
+const equalSign = document.querySelector("#equalSign");
+const numberNodes = document.querySelectorAll(".number");
+const operatorNodes = document.querySelectorAll(".operator");
+
+
+
+// Event Listeners
+clear.addEventListener('click', () => doSomething())
+
+
 
 function start()
 {
-    addNumberListeners();
-    addOptionListeners();
-    addOperatorListeners();
-    equalSignListener();
+
 }
 
-function resetVars()
-{
-    FIRST_NUMBER = null;
-    SECOND_NUMBER = null;
-    OPERATION = null;
-    RESULT = null;
-    userPress = null;
-    }
+
+
+
 
 function add(a,b)
 {
@@ -80,7 +82,6 @@ function operate(operator, a, b)
 function clearDisplay()
 {
     displayText.textContent = 0;
-    resetVars();
 }
 
 function deleteNumber()
@@ -89,139 +90,9 @@ function deleteNumber()
     displayText.textContent = string.slice(1);
 }
 
-function populateDisplay()
-{
-    const operators = ["+","-","x","÷","="];
-
-    if(displayText.textContent[0] == "0") // if the display is 0
-    {
-        displayText.textContent = DISPLAY_DIGIT;
-        return;
-    }
-
-    if(operators.includes(displayText.textContent[0])) // if the display is an operator
-    {
-        displayText.textContent = DISPLAY_DIGIT;
-        return;
-    }
-
-    else
-    {
-        displayText.textContent += DISPLAY_DIGIT;
-    }
-
-}
-
-function addNumberListeners()
-{
-    const numberNodes = document.querySelectorAll(".number");
-
-    let numberArray = Array.from(numberNodes);
 
 
-    numberArray.forEach(element => {
-        element.addEventListener('click', function(e){
-            const value = element.getAttribute('value');
-            DISPLAY_DIGIT = value;
-            populateDisplay();
-            userPress = value;
-        });
-    });
-}
 
-function addOperatorListeners()
-{
-    const operatorNodes = document.querySelectorAll(".operator");
-
-    let operatorArray = Array.from(operatorNodes);
-
-
-    operatorArray.forEach(element => {
-        element.addEventListener('click', function(e){
-            const value = element.getAttribute('value');
-            DISPLAY_DIGIT = value;
-            populateDisplay();
-            userPress = value;
-            saveNumber();
-        });
-    });
-}
-
-
-function addOptionListeners()
-{
-    const clear = document.querySelector("#clear");
-    const deleteNum = document.querySelector("#delete");
-
-
-    clear.addEventListener('click', function(e){
-        const value = clear.getAttribute('value');
-        userPress = value;
-        clearDisplay();
-    });
-
-    deleteNum.addEventListener('click', function(e){
-        const value = deleteNum.getAttribute('value');
-        userPress = value;
-        deleteNumber();
-    });
-
-}
-
-function equalSignListener()
-{
-    const equalSign = document.querySelector("#equalSign");
-    
-    equalSign.addEventListener('click', function(e){
-        if(RESULT == null)
-        {
-            SECOND_NUMBER = displayText.textContent;
-            operate(OPERATION,FIRST_NUMBER,SECOND_NUMBER);
-            OPERATION = displayText.textContent.slice(-1);
-        }
-
-        displayText.textContent = RESULT;
-    });
-}
-
-function saveNumber()
-{
-    /// if a user presses an operator save the first number and the operator
-    // if a user presses "=" operate() on the two numbers
-    if(RESULT != null)
-    {
-        console.log(176);
-        FIRST_NUMBER = RESULT;
-        console.log("First: ", FIRST_NUMBER);
-        SECOND_NUMBER = displayText.textContent.slice(0,-1);
-        console.log("Second: ", SECOND_NUMBER);
-        console.log("Operation: ", OPERATION);
-        operate(OPERATION,FIRST_NUMBER,SECOND_NUMBER);
-        OPERATION = displayText.textContent.slice(-1);
-        console.log("Result: ",RESULT);
-    }
-
-
-    if(FIRST_NUMBER != null && OPERATION != null && SECOND_NUMBER == null)
-    {
-        console.log(186);
-        SECOND_NUMBER = displayText.textContent.slice(0,-1);
-        operate(OPERATION, FIRST_NUMBER, SECOND_NUMBER);
-        OPERATION = displayText.textContent.slice(-1);
-        console.log("Result: ",RESULT);
-    }   
-   
-    if(FIRST_NUMBER == null && OPERATION == null)
-    {
-        console.log(194);
-        FIRST_NUMBER = displayText.textContent.slice(0,-1);
-        OPERATION = displayText.textContent.slice(-1);
-        console.log(FIRST_NUMBER);
-        console.log(OPERATION);        
-    }
-
-    displayText.textContent = userPress;
-}
 
 
 start();
