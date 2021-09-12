@@ -2,7 +2,12 @@ body {
     margin: 0 auto;
     width: 100%;
     font-family: sans-serif;
-    background-color:rgb(138, 106, 158);
+    background-color:#111;
+    color: wheat;
+}
+
+button {
+    color: wheat;
 }
 
 #pageWrapper {
@@ -12,7 +17,7 @@ body {
 
 #housing {
     margin-top: 100px;
-    border: solid red 2px;
+    border: solid rgba(0, 0, 0, 0) 2px;
     width: 400px;
     border-radius: 40px;
     background-color: rgb(41, 51, 78);
@@ -20,7 +25,7 @@ body {
 
 #display {
     display: inline-block;
-    border: solid green 2px;
+    border: solid rgba(0, 0, 0, 0) 1px;
     height: 100px;
     width: 100%;
     margin-top: 50px;
@@ -35,17 +40,20 @@ body {
     display: inline-flex;
     justify-content: center;
     margin: 5px;
-    background-color: rgb(190, 240, 240);
+    background-color: rgb(48, 46, 46);
     height: 60px;
     width: 20%; /* can't put 20 will figure out why */
-    border: solid 2px purple;
+    border: solid 2px rgba(0, 128, 0, 0.233);
     border-radius: 10px;
     flex-direction: column;
     font-size: 1.25em;
+    transition: 1s;
 }
 
 .button:hover {
-    background-color: rgb(199, 206, 228);
+    transition: 0s;
+    background-color: #0f0;
+    box-shadow: 0 0 120px #0f0;
 }
 
 #displayText{
@@ -54,7 +62,7 @@ body {
     padding-bottom: 30px;
     padding-right: 40px;
     font-size: 2em;
-    background-color: azure;
+    background-color: rgb(48, 46, 46);
 }
 
 #optionGroup {
@@ -66,22 +74,40 @@ body {
 .option {
     display: inline-block;
     text-align: center;
-    border:solid purple 2px;
-    background-color: rgb(190, 240, 240);
+    border:solid rgba(0, 128, 0, 0.233) 2px;
+    background-color: rgb(48, 46, 46);
     width: 40%;
     height: 50px;
     line-height: 50px; /* css trick to vertical align text is to make line height equal to height */
     margin: 10px;
     border-radius: 10px;
     font-size: 1.25em;
+    transition: 1s;
 }
 
 .option:hover
 {
-    background-color: rgb(199, 206, 228);
+    transition: 0s;
+    background-color: #0f0;
+    box-shadow: 0 0 120px #0f0;
 }
 
 .operator:focus
 {
-    background-color: rgb(187, 255, 0);
+    background-color: rgb(213, 255, 96);
+    color: green;
+}
+
+#gitHubImg
+{
+    box-shadow: 0 0 120px wheat;
+    border-radius: 20px;
+    background-color: wheat;
+    width: 40px;
+    transition: 1s;
+}
+
+#gitHubImg:hover
+{
+    background-color:#0f0;
 }
