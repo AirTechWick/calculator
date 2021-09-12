@@ -100,14 +100,16 @@ button {
 
 #gitHubImg
 {
-    box-shadow: 0 0 120px wheat;
+    margin-left: 30px;
+    margin-top: 30px;
     border-radius: 20px;
-    background-color: wheat;
+    background-color: grey;
     width: 40px;
-    transition: 1s;
+    transition: .75s;
 }
 
 #gitHubImg:hover
 {
     background-color:#0f0;
+    box-shadow: 0 0 120px #0f0;
 }
