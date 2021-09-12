@@ -125,7 +125,7 @@ function evaluate()
     if(needNewSecondNumber)
     {
         secondNumber = displayValue;
-        console.log("127secondNumber saved: ", secondNumber);
+        console.log("secondNumber saved: ", secondNumber);
         needNewSecondNumber = false;
     }
 
@@ -186,7 +186,7 @@ function saveOperator(element)
     else if(firstNumber != null)
     {
         secondNumber = displayValue;
-        console.log("188secondNumber saved: ", secondNumber);
+        console.log("secondNumber saved: ", secondNumber);
         operate(activeOperator,firstNumber,secondNumber);
         displayResult();
         startNewDisplay = true;
