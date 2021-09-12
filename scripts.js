@@ -54,7 +54,11 @@ function divide(a,b)
     if(b == 0)
     {
         window.alert("Nope, You can't do that!");
-        return;
+        secondNumber = 1;
+        activeOperator = "x"
+        result = operate(activeOperator,a,secondNumber);
+        displayValue = 1; // this somehow fixed it
+        return result;
     }
 
     result = a / b;
@@ -110,18 +114,21 @@ function deleteNumber()
 function evaluate()
 {
     console.log("evaluate");
+
     if(secondNumber == null)
     {
         secondNumber = displayValue;
-        console.log("secondNumber saved: ", secondNumber);
+        console.log("120secondNumber saved: ", secondNumber);
     }
+
 
     if(needNewSecondNumber)
     {
         secondNumber = displayValue;
-        console.log("secondNumber saved: ", secondNumber);
+        console.log("127secondNumber saved: ", secondNumber);
         needNewSecondNumber = false;
     }
+
 
     operate(activeOperator,firstNumber,secondNumber);
     displayResult();
@@ -179,7 +186,7 @@ function saveOperator(element)
     else if(firstNumber != null)
     {
         secondNumber = displayValue;
-        console.log("secondNumber saved: ", secondNumber);
+        console.log("188secondNumber saved: ", secondNumber);
         operate(activeOperator,firstNumber,secondNumber);
         displayResult();
         startNewDisplay = true;
