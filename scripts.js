@@ -26,17 +26,14 @@ numberNodes.forEach(element => {
     element.addEventListener('click', () => appendNumber(element))
 });
 operatorNodes.forEach(element => {
-    element.addEventListener('click', () => {saveOperator(element); } )
+    element.addEventListener('click', () => {saveOperator(element); } ) // use this to add multiple listeners to one event
 })
 
 
 function add(a,b)
 {
-    let intA = parseInt(a);
-    let intB = parseInt(b);
     
-    result = intA + intB;
-
+    result = a + b;
     return result;
 }
 
@@ -143,11 +140,15 @@ function appendNumber(element)
         return;
     }
 
+    if (element.getAttribute('value') == "." && display.textContent.includes(".")) // stops from user adding too many decimals
+    {
+        return;
+    }
+
     if(displayValue == 0) // if the first number on the calculator display is 0 then the display should change to the number pressed
     {
         display.textContent = element.getAttribute('value');
     }
-
 
     else
         display.textContent += element.getAttribute('value'); // else append the number to the end of the current number
